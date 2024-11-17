@@ -1,0 +1,40 @@
+{
+  "id": "herp",
+  "type": "SharedSlice",
+  "name": "Hero",
+  "description": "Herp",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "firstname": {
+          "type": "Text",
+          "config": {
+            "label": "firstName",
+            "placeholder": "Pouria"
+          }
+        },
+        "lastname": {
+          "type": "Text",
+          "config": {
+            "label": "lastName",
+            "placeholder": "Kalantari"
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "title",
+            "placeholder": "Fronend"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
