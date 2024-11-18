@@ -4,7 +4,6 @@ import { ContactShadows, Environment, Float } from "@react-three/drei";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Canvas } from "@react-three/fiber";
-
 const Shapes = () => {
   return (
     <div className="md:col-start-2 p-2 row-span-1 -mt-9   aspect-square   md:mt-0 md:col-span-1 row-start-1 ">
@@ -66,18 +65,25 @@ function Geometries() {
     new Three.MeshStandardMaterial({ color: 0x8e44ad, roughness: 0.1 }),
     new Three.MeshStandardMaterial({ color: 0x1abc9c, roughness: 0.1 }),
   ];
+  const soundEffects = [
+    new Audio("@voices/click1.mp3"),
+    new Audio("@voices/click3.mp3"),
+    new Audio("@voices/click2.mp3"),
+    new Audio("@voices/click4.ogg"),
+  ];
   return geometries.map(({ position, r, geometry }) => (
     <Geometry
       key={JSON.stringify(position)}
       position={position.map((p) => p * 2)}
       geometry={geometry}
+      soundEffects={soundEffects}
       r={r}
       materials={materials}
     />
   ));
 }
 
-function Geometry({ r, position, geometry, materials }) {
+function Geometry({ r, position, geometry, materials, soundEffects }) {
   const meshRef = useRef();
   const [visible, setVisible] = useState(false);
   const startingMaterial = getRandomMaterial();
@@ -86,7 +92,7 @@ function Geometry({ r, position, geometry, materials }) {
   }
   function handleClick(e) {
     const mesh = e.object;
-    console.log(e);
+    gsap.utils.random(soundEffects).play();
     gsap.to(mesh.rotation, {
       x: `+=${gsap.utils.random(0, 2)}`,
       y: `+=${gsap.utils.random(0, 2)}`,

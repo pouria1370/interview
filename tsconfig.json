@@ -18,7 +18,9 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/public": ["./src/public/*"],
+      "@/voices": ["./src/public/assets/voices/*"]
     }
   },
   "include": [
