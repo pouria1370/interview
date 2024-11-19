@@ -1,0 +1,60 @@
+{
+  "id": "articke_gist",
+  "type": "SharedSlice",
+  "name": "ArtickeGist",
+  "description": "ArtickeGist",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "articleimage": {
+          "type": "Image",
+          "config": {
+            "label": "ArticleImage",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "articletext": {
+          "type": "StructuredText",
+          "config": {
+            "label": "ArticleText",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "articlebuttonlink": {
+          "type": "Link",
+          "config": {
+            "label": "ArticleButtonLink",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        },
+        "articlebuttontext": {
+          "type": "Text",
+          "config": {
+            "label": "ArticleButtonText",
+            "placeholder": ""
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

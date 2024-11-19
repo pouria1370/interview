@@ -134,6 +134,71 @@ export type LandingpageDocument<Lang extends string = string> =
     Lang
   >;
 
+type PortfoliopageDocumentDataSlicesSlice = ArtickeGistSlice;
+
+/**
+ * Content for PortfolioPage documents
+ */
+interface PortfoliopageDocumentData {
+  /**
+   * Slice Zone field in *PortfolioPage*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfoliopage.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<PortfoliopageDocumentDataSlicesSlice> /**
+   * Meta Title field in *PortfolioPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: portfoliopage.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *PortfolioPage*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: portfoliopage.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *PortfolioPage*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: portfoliopage.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * PortfolioPage document from Prismic
+ *
+ * - **API ID**: `portfoliopage`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PortfoliopageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PortfoliopageDocumentData>,
+    "portfoliopage",
+    Lang
+  >;
+
 type ProductDocumentDataSlicesSlice = never;
 
 /**
@@ -199,10 +264,253 @@ export type ProductDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *setting → NavItem*
+ */
+export interface SettingDocumentDataNavitemItem {
+  /**
+   * navLink field in *setting → NavItem*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.navitem[].navlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  navlink: prismic.LinkField;
+
+  /**
+   * navText field in *setting → NavItem*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.navitem[].navtext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  navtext: prismic.KeyTextField;
+}
+
+type SettingDocumentDataSlicesSlice = ArticleSlice;
+
+/**
+ * Content for setting documents
+ */
+interface SettingDocumentData {
+  /**
+   * Name field in *setting*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * NavItem field in *setting*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.navitem[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navitem: prismic.GroupField<Simplify<SettingDocumentDataNavitemItem>>;
+
+  /**
+   * CtaLink field in *setting*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.ctalink
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  ctalink: prismic.LinkField;
+
+  /**
+   * TwitterLink field in *setting*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.twitterlink
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  twitterlink: prismic.LinkField;
+
+  /**
+   * LinkdinLink field in *setting*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.linkdinlink
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  linkdinlink: prismic.LinkField;
+
+  /**
+   * GithubLink field in *setting*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.githublink
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  githublink: prismic.LinkField;
+
+  /**
+   * Slice Zone field in *setting*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<SettingDocumentDataSlicesSlice> /**
+   * description field in *setting*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.description
+   * - **Tab**: Seo and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  description: prismic.KeyTextField;
+
+  /**
+   * image field in *setting*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.image
+   * - **Tab**: Seo and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * title field in *setting*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: setting.title
+   * - **Tab**: Seo and Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * setting document from Prismic
+ *
+ * - **API ID**: `setting`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type SettingDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<SettingDocumentData>,
+    "setting",
+    Lang
+  >;
+
 export type AllDocumentTypes =
   | ArticleDocument
   | LandingpageDocument
-  | ProductDocument;
+  | PortfoliopageDocument
+  | ProductDocument
+  | SettingDocument;
+
+/**
+ * Primary content in *ArtickeGist → Default → Primary*
+ */
+export interface ArtickeGistSliceDefaultPrimary {
+  /**
+   * ArticleImage field in *ArtickeGist → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articke_gist.default.primary.articleimage
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  articleimage: prismic.ImageField<never>;
+
+  /**
+   * ArticleText field in *ArtickeGist → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articke_gist.default.primary.articletext
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  articletext: prismic.RichTextField;
+
+  /**
+   * ArticleButtonLink field in *ArtickeGist → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articke_gist.default.primary.articlebuttonlink
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  articlebuttonlink: prismic.LinkField;
+
+  /**
+   * ArticleButtonText field in *ArtickeGist → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articke_gist.default.primary.articlebuttontext
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  articlebuttontext: prismic.KeyTextField;
+
+  /**
+   * Title field in *ArtickeGist → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articke_gist.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ArtickeGist Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArtickeGistSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArtickeGistSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ArtickeGist*
+ */
+type ArtickeGistSliceVariation = ArtickeGistSliceDefault;
+
+/**
+ * ArtickeGist Shared Slice
+ *
+ * - **API ID**: `articke_gist`
+ * - **Description**: ArtickeGist
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ArtickeGistSlice = prismic.SharedSlice<
+  "articke_gist",
+  ArtickeGistSliceVariation
+>;
 
 /**
  * Primary content in *Article → Default → Primary*
@@ -358,10 +666,21 @@ declare module "@prismicio/client" {
       LandingpageDocument,
       LandingpageDocumentData,
       LandingpageDocumentDataSlicesSlice,
+      PortfoliopageDocument,
+      PortfoliopageDocumentData,
+      PortfoliopageDocumentDataSlicesSlice,
       ProductDocument,
       ProductDocumentData,
       ProductDocumentDataSlicesSlice,
+      SettingDocument,
+      SettingDocumentData,
+      SettingDocumentDataNavitemItem,
+      SettingDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ArtickeGistSlice,
+      ArtickeGistSliceDefaultPrimary,
+      ArtickeGistSliceVariation,
+      ArtickeGistSliceDefault,
       ArticleSlice,
       ArticleSliceDefaultPrimary,
       ArticleSliceVariation,

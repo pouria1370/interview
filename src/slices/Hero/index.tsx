@@ -1,5 +1,5 @@
 "use client";
-import Bounded from "@/Bounded/Bounded";
+import Bounded from "@/Components/Bounded/Bounded";
 import { Content, KeyTextField } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import gsap from "gsap";

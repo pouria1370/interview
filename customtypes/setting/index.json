@@ -1,0 +1,119 @@
+{
+  "format": "custom",
+  "id": "setting",
+  "label": "setting",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "name": {
+        "type": "Text",
+        "config": {
+          "label": "Name",
+          "placeholder": ""
+        }
+      },
+      "navitem": {
+        "type": "Group",
+        "config": {
+          "label": "NavItem",
+          "repeat": true,
+          "fields": {
+            "navlink": {
+              "type": "Link",
+              "config": {
+                "label": "navLink",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null,
+                "allowText": true
+              }
+            },
+            "navtext": {
+              "type": "Text",
+              "config": {
+                "label": "navText",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "ctalink": {
+        "type": "Link",
+        "config": {
+          "label": "CtaLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      },
+      "twitterlink": {
+        "type": "Link",
+        "config": {
+          "label": "TwitterLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      },
+      "linkdinlink": {
+        "type": "Link",
+        "config": {
+          "label": "LinkdinLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      },
+      "githublink": {
+        "type": "Link",
+        "config": {
+          "label": "GithubLink",
+          "placeholder": "",
+          "allowTargetBlank": true,
+          "select": null,
+          "allowText": true
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "article": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "Seo and Metadata": {
+      "description": {
+        "type": "Text",
+        "config": {
+          "label": "description",
+          "placeholder": ""
+        }
+      },
+      "image": {
+        "type": "Image",
+        "config": {
+          "label": "image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "title",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}
