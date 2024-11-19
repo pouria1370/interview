@@ -27,10 +27,12 @@ const Image = ({ classnName, field, alt }: Iprops) => {
       if (!component) return;
       const componentCoordination = component.current?.getBoundingClientRect();
       const componentCenterX =
-        componentCoordination?.left ?? 0 + componentCoordination?.width / 2;
+        componentCoordination?.left ??
+        0 + (componentCoordination?.width ?? 0) / 2;
       const distanceToCenter = e.x - componentCenterX;
       const distanceToCenterPercentage =
-        1 - Math.abs(distanceToCenter / componentCoordination?.width / 2);
+        1 -
+        Math.abs(distanceToCenter / (componentCoordination?.width ?? 0) / 2);
       gsap
         .timeline({
           defaults: { duration: 0.5, overwrite: "auto", ease: "power3.out" },

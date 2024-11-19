@@ -6,4 +6,5 @@ export const components = {
   articke_gist: dynamic(() => import("./ArtickeGist")),
   article: dynamic(() => import("./Article")),
   herp: dynamic(() => import("./Hero")),
+  list_key_value: dynamic(() => import("./ListKeyValue")),
 };

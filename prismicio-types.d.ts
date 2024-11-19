@@ -134,7 +134,9 @@ export type LandingpageDocument<Lang extends string = string> =
     Lang
   >;
 
-type PortfoliopageDocumentDataSlicesSlice = ArtickeGistSlice;
+type PortfoliopageDocumentDataSlicesSlice =
+  | ListKeyValueSlice
+  | ArtickeGistSlice;
 
 /**
  * Content for PortfolioPage documents
@@ -639,6 +641,106 @@ type HerpSliceVariation = HerpSliceDefault;
  */
 export type HerpSlice = prismic.SharedSlice<"herp", HerpSliceVariation>;
 
+/**
+ * Item in *ListKeyValue → Default → Primary → List*
+ */
+export interface ListKeyValueSliceDefaultPrimaryListItem {
+  /**
+   * name field in *ListKeyValue → Default → Primary → List*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.list[].name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * image field in *ListKeyValue → Default → Primary → List*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.list[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * color field in *ListKeyValue → Default → Primary → List*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.list[].color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  color: prismic.ColorField;
+
+  /**
+   * link field in *ListKeyValue → Default → Primary → List*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.list[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *ListKeyValue → Default → Primary*
+ */
+export interface ListKeyValueSliceDefaultPrimary {
+  /**
+   * List field in *ListKeyValue → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.list[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  list: prismic.GroupField<Simplify<ListKeyValueSliceDefaultPrimaryListItem>>;
+
+  /**
+   * title field in *ListKeyValue → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: list_key_value.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for ListKeyValue Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListKeyValueSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ListKeyValueSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ListKeyValue*
+ */
+type ListKeyValueSliceVariation = ListKeyValueSliceDefault;
+
+/**
+ * ListKeyValue Shared Slice
+ *
+ * - **API ID**: `list_key_value`
+ * - **Description**: ListKeyValue
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ListKeyValueSlice = prismic.SharedSlice<
+  "list_key_value",
+  ListKeyValueSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -689,6 +791,11 @@ declare module "@prismicio/client" {
       HerpSliceDefaultPrimary,
       HerpSliceVariation,
       HerpSliceDefault,
+      ListKeyValueSlice,
+      ListKeyValueSliceDefaultPrimaryListItem,
+      ListKeyValueSliceDefaultPrimary,
+      ListKeyValueSliceVariation,
+      ListKeyValueSliceDefault,
     };
   }
 }
